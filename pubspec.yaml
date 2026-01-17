@@ -1,8 +1,8 @@
 name: elysian_nav
 description: A heavenly, elegant, and highly customizable bottom navigation bar for Flutter. Featuring soft gradients, premium shadows, rounded bliss, and celestial glow effects — perfect for modern, luxurious mobile apps.
 version: 0.0.1-dev.1
-homepage: https://github.com/yourusername/elysian_nav
-repository: https://github.com/yourusername/elysian_nav
+homepage: https://github.com/fardincse/elysian_nav
+repository: https://github.com/fardincse/elysian_nav
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
