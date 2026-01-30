@@ -27,7 +27,6 @@ void main() {
         ),
       );
 
-      // Widget টা build হয়েছে কি না চেক
       expect(find.byType(ElysianNav), findsOneWidget);
       expect(find.byType(BottomNavigationBar), findsOneWidget);
     });
@@ -40,21 +39,19 @@ void main() {
               currentIndex: 1,
               onTap: (_) {},
               items: [
-                ElysianNavItem(icon: Icon(Icons.home), label: 'Home'),
-                ElysianNavItem(icon: Icon(Icons.favorite), label: 'Favorites'),
-                ElysianNavItem(icon: Icon(Icons.person), label: 'Profile'),
+                ElysianNavItem(icon: const Icon(Icons.home), label: 'Home'),
+                ElysianNavItem(icon: const Icon(Icons.favorite), label: 'Favorites'),
+                ElysianNavItem(icon: const Icon(Icons.person), label: 'Profile'),
               ],
             ),
           ),
         ),
       );
 
-      // ৩টা label দেখা যাচ্ছে কি না
       expect(find.text('Home'), findsOneWidget);
       expect(find.text('Favorites'), findsOneWidget);
       expect(find.text('Profile'), findsOneWidget);
 
-      // BottomNavigationBarItem এর সংখ্যা
       expect(find.byType(BottomNavigationBarItem), findsNWidgets(3));
     });
 
@@ -66,27 +63,26 @@ void main() {
               currentIndex: 1,
               onTap: (_) {},
               items: [
-                ElysianNavItem(icon: Icon(Icons.home), label: 'Home'),
-                ElysianNavItem(icon: Icon(Icons.search), label: 'Search'),
-                ElysianNavItem(icon: Icon(Icons.settings), label: 'Settings'),
+                ElysianNavItem(icon: const Icon(Icons.home), label: 'Home'),
+                ElysianNavItem(icon: const Icon(Icons.search), label: 'Search'),
+                ElysianNavItem(icon: const Icon(Icons.settings), label: 'Settings'),
               ],
             ),
           ),
         ),
       );
 
-      // দ্বিতীয় আইটেম selected (index 1)
-      final selectedIcons = tester.widgetList<Icon>(
+     
+      tester.widgetList<Icon>(
         find.descendant(
           of: find.byType(BottomNavigationBar),
           matching: find.byType(Icon),
         ),
       );
 
-      // এখানে activeIcon বা glow চেক করা একটু জটিল, তাই label color চেক করা যায়
-      // অথবা শুধু currentIndex সঠিকভাবে পাস হচ্ছে কি না চেক
+     
       expect(find.text('Search'), findsOneWidget);
-      // আরো advanced চেক পরে যোগ করতে পারো
+     
     });
 
     testWidgets('should call onTap when item is tapped', (WidgetTester tester) async {
@@ -109,7 +105,7 @@ void main() {
         ),
       );
 
-      // দ্বিতীয় আইটেমে ট্যাপ সিমুলেট করা
+
       await tester.tap(find.text('Star'));
       await tester.pump();
 
@@ -130,7 +126,7 @@ void main() {
         ),
       );
 
-      // শুধু build হয়েছে কি না চেক (gradient আসলেই apply হয়েছে কি না চেক করা কঠিন)
+  
       expect(find.byType(ShaderMask), findsOneWidget);
       expect(find.byIcon(Icons.favorite), findsOneWidget);
     });

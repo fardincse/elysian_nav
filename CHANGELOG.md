@@ -10,3 +10,6 @@
 ## [1.0.0] - 2026-01-30
 - Added new property `showSelectedLabelOnly`
 - First stable release
+
+## [1.0.1] - 2026-01-30
+- Update pubspec.yaml file descreption
