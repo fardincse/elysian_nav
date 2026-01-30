@@ -7,3 +7,7 @@
 
 ## [0.0.2-dev.2] - 2026-01-17
 - Update pubspec.yaml file 
+
+## [1.0.0] - 2026-01-20 
+- Added new property (clarify name properly) 
+- First stable release

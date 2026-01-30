@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:elysian_nav/elysian_nav.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,88 +11,92 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ElysianNav Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6B48FF)),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'ElysianNav Example',
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: const HomePage(),
+        );
+      },
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = [
-    Center(child: Text('🏠 Home Page', style: TextStyle(fontSize: 40))),
-    Center(child: Text('🔍 Discover Page', style: TextStyle(fontSize: 40))),
-    Center(child: Text('❤️ Favorites', style: TextStyle(fontSize: 40))),
-    Center(child: Text('👤 Profile', style: TextStyle(fontSize: 40))),
+  final List<Widget> _pages = const [
+    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Search Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Favorites Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, // ন্যাভবারের পিছনে কন্টেন্ট দেখানোর জন্য
       body: _pages[_selectedIndex],
       bottomNavigationBar: ElysianNav(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        height: 82,
-        borderRadius: 42,
-        backgroundGradient: const LinearGradient(
-          colors: [Color(0xFF6B48FF), Color(0xFF00DDEB)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            blurRadius: 30,
-            offset: const Offset(0, 15),
-          ),
-        ],
         enableGlowOnActive: true,
+        backgroundGradient: const LinearGradient(
+          colors: [Color(0xFFF8F9FA), Colors.white],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         items: [
           ElysianNavItem(
             icon: ElysianNav.celestialIcon(
-              icon: const Icon(Icons.home_outlined, color: Colors.white),
-              colors: [Colors.white, Colors.blue[300]!],
+              icon: const Icon(Icons.home_outlined),
+              colors: [Colors.blue, Colors.purple],
             ),
-            activeIcon: const Icon(Icons.home_rounded, color: Colors.white),
+            activeIcon: ElysianNav.celestialIcon(
+              icon: const Icon(Icons.home),
+              colors: [Colors.blue, Colors.purple],
+            ),
             label: 'Home',
           ),
           ElysianNavItem(
             icon: ElysianNav.celestialIcon(
-              icon: const Icon(Icons.explore_outlined, color: Colors.white),
-              colors: [Colors.white, Colors.cyan[300]!],
+              icon: const Icon(Icons.search_outlined),
+              colors: [Colors.pink, Colors.orange],
             ),
-            label: 'Discover',
+            activeIcon: ElysianNav.celestialIcon(
+              icon: const Icon(Icons.search),
+              colors: [Colors.pink, Colors.orange],
+            ),
+            label: 'Search',
           ),
           ElysianNavItem(
             icon: ElysianNav.celestialIcon(
-              icon: const Icon(Icons.favorite_border, color: Colors.white),
-              colors: [Colors.white, Colors.pinkAccent],
+              icon: const Icon(Icons.favorite_border),
+              colors: [Colors.red, Colors.pink],
             ),
-            activeIcon: const Icon(Icons.favorite, color: Colors.white),
+            activeIcon: ElysianNav.celestialIcon(
+              icon: const Icon(Icons.favorite),
+              colors: [Colors.red, Colors.pink],
+            ),
             label: 'Favorites',
           ),
           ElysianNavItem(
             icon: ElysianNav.celestialIcon(
-              icon: const Icon(Icons.person_outline, color: Colors.white),
-              colors: [Colors.white, Colors.purple[300]!],
+              icon: const Icon(Icons.person_outline),
+              colors: [Colors.green, Colors.teal],
             ),
-            activeIcon: const Icon(Icons.person, color: Colors.white),
+            activeIcon: ElysianNav.celestialIcon(
+              icon: const Icon(Icons.person),
+              colors: [Colors.green, Colors.teal],
+            ),
             label: 'Profile',
           ),
         ],
