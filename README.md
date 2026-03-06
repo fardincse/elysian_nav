@@ -30,7 +30,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  elysian_nav: ^1.0.0   # Check latest version on pub.dev
+  elysian_nav: ^1.0.2   # Check latest version on pub.dev
   flutter_screenutil: ^5.9.0   
 ```
 
@@ -70,9 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+```
 
 ### 1.Basic Usage (Icons Only)
 ![gif_1](assets/gif_1.gif)
+```dart
 ElysianNav(
   currentIndex: _selectedIndex,
   onTap: (index) => setState(() => _selectedIndex = index),
@@ -82,9 +84,11 @@ ElysianNav(
     ElysianNavItem(icon: Icon(Icons.person)),
   ],
 )
+```
 
 ### 2.Icon + Label
 ![gif_2](assets/gif_2.gif)
+```dart
 ElysianNav(
   currentIndex: _selectedIndex,
   onTap: (index) => setState(() => _selectedIndex = index),
@@ -93,10 +97,12 @@ ElysianNav(
     ElysianNavItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 )
+```
 
 
 ### 3.Gradient Icons
 ![gif_5](assets/gif_5.gif)
+```dart
 ElysianNavItem(
   icon: ElysianNav.celestialIcon(
     icon: Icon(Icons.home),
@@ -104,10 +110,12 @@ ElysianNavItem(
   ),
   label: 'Home',
 )
+```
 
 
 ### 4.Gradient Background
 ![gif_4](assets/gif_4.gif)
+```dart
 ElysianNav(
   backgroundGradient: LinearGradient(
     colors: [Color(0xFFE0F7FA), Color(0xFFFFFFFF)],
@@ -116,19 +124,22 @@ ElysianNav(
   ),
   items: [...]
 )
-
+```
 
 ### 5.Glow Effect
 ![gif_3](assets/gif_3.gif)
+```dart
 ElysianNav(
   enableGlowOnActive: true,
   glowColor: Colors.blue.withOpacity(0.5),
   items: [...]
 )
+```
 
 
 ### 6.Show Only Selected Label
 ![gif_6](assets/gif_6.gif)
+```dart
 ElysianNav(
   showSelectedLabelOnly: true,
   items: [
@@ -136,6 +147,7 @@ ElysianNav(
     ElysianNavItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 )
+```
 
 
 ## ⚙️ ElysianNav Properties

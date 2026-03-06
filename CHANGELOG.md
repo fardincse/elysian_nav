@@ -13,3 +13,6 @@
 
 ## [1.0.1] - 2026-01-30
 - Update pubspec.yaml file descreption
+
+## [1.0.2] - 2026-03-06
+- Update README.md file
